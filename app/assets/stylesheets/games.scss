@@ -1,0 +1,67 @@
+// Place all the styles related to the games controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.cs-game {
+  width: 100%;
+  height: 100%;
+  div {
+    padding: 0;
+    height: 100%;
+    text-align: center;
+  }
+}
+
+.cs-board {
+  background-color: lightblue;
+}
+
+.cs-chat {
+  background-color: lightgoldenrodyellow;
+  td {
+    line-height: 0;
+  }
+}
+
+.cs-game table {
+  width: 100%;
+  height: 100%;
+}
+
+.cs-chat .cs-input-box {
+  background-color: lightgrey;
+
+  form {
+    line-height: 0;
+  }
+}
+
+.cs-chat .cs-input-text-area {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 15%;
+  width: 100%;
+  background-color: transparent;
+  border: 0;
+  font-size: large;
+  line-height: 150%;
+  outline: none;
+  text-align: center
+}
+
+.cs-chat .cs-question-submit {
+  padding: 0;
+  height: 0;
+  border: 0;
+}
+
+.cs-answer-yes {
+  width: 50%;
+  background-color: lightgreen;
+}
+
+.cs-answer-no {
+  width: 50%;
+  background-color: salmon;
+}

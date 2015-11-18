@@ -1,0 +1,72 @@
+<div class='cs-game'>
+
+  <div class='cs-board col-xs-9'>
+    <table>
+      <% 4.times do |i| %>
+        <tr>
+        <% 4.times do |j| %>
+          <td colspan='3' style="background-image: url(<%= @people[4*i+j].name %>); background-repeat: no-repeat; background-size: contain; background-position: center;">
+          </td>
+        <% end %>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+
+  <div class='cs-chat col-xs-3'>
+    <table>
+      <% if @current_question.present? %>
+        <% @number_of_present -= 1 %>
+        <tr>
+          <td>
+            <%= @current_question.name %>
+          </td>
+        </tr>
+      <% end %>
+      <% @number_of_present.times do |i| %>
+        <tr>
+          <td>
+            <%= @answers[i].name %>
+            <br>
+            <%= @questions[i].name %>
+          </td>
+        </tr>
+      <% end %>
+      <% @number_of_blank.times do |i| %>
+        <tr>
+          <td>
+          </td>
+        </tr>
+      <% end %>
+      <tr class='cs-input-box'>
+        <% if @question.present? %>
+          <td rowspan='2'>
+              <%= form_for @question, class: 'cs-question-form js-question-form' do |f| %>
+                <%= f.text_area :name, class: 'cs-input-text-area', autofocus: true %>
+                <%= f.hidden_field :game_id, value: @game.id %>
+                <%= f.submit nil, id: 'js-question-submit', class: 'cs-question-submit' %>
+              <% end %>
+          </td>
+        <% else %>
+          <td rowspan='2' class='cs-answer-yes' id='js-answer-yes'>
+            Yes
+            <%= form_for @answer_yes, :html => { :id => 'new_answer_1' } do |f| %>
+              <%= f.hidden_field :name, value: true %>
+              <%= f.hidden_field :game_id, value: @game.id %>
+              <%= f.submit nil, id: 'js-answer-yes-submit', class: 'cs-question-submit' %>
+            <% end %>
+          </td>
+          <td rowspan='2' class='cs-answer-no' id='js-answer-no'>
+            No
+            <%= form_for @answer_no, :html => { :id => 'new_answer_2' } do |f| %>
+              <%= f.hidden_field :name, value: false %>
+              <%= f.hidden_field :game_id, value: @game.id %>
+              <%= f.submit nil, id: 'js-answer-no-submit', class: 'cs-question-submit' %>
+            <% end %>
+          </td>
+        <% end %>
+      </tr>
+    </table>
+  </div>
+
+</div>
